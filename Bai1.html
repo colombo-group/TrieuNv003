@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Example1</title>
+	<style>
+		*{
+			margin: 0px;
+			padding: 0px;
+		}
+
+		div#main{
+			height: all;
+			width: all;
+		}
+
+		div.center{
+			min-width: 1000px;
+			width: 1000px;
+			margin: auto;
+		}
+		.center div.box{
+			border: 1px solid #000;
+			min-width: 100px;
+			min-height: 250px;
+			margin: 5px;
+			box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.2);
+			float: left;
+		}
+		.center div p{
+			margin: 5px;
+		}
+		.center div#content{
+			margin: auto;
+			width: 800px;
+		}
+	</style>
+
+</head>
+<body>
+	<div id="main">
+		<div class="center">
+			<div id="content">
+				<script type="text/javascript">
+
+					for (var i = 1; i < 11; i++){
+
+						if (i == 6) {
+							console.log("xxx");
+							document.write('<div style="clear:both">' + '</div>');
+						}
+
+						document.write("<div class='box'>");
+						for (var j = 1; j < 11; j++){
+							document.write("<p>" + i + " * " + j + " = " + i*j + "</p>");
+						}
+
+						document.write("</div>");
+					}
+				</script>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
