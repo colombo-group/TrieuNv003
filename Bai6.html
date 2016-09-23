@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Bài 6</title>
+</head>
+<body>
+
+	<script type="text/javascript">
+		function result(calculation){
+
+			var x1 = document.getElementById("variable1").value;
+			var x2 = document.getElementById("variable2").value;
+
+			if(calculation == "sum"){
+				document.getElementById("result").innerHTML = parseInt(x1) + parseInt(x2);
+			}
+			if(calculation == "sub"){
+				document.getElementById("result").innerHTML = x1 - x2;
+			}
+			if(calculation == "mutil"){
+				document.getElementById("result").innerHTML = x1 * x2;
+			}
+			if(calculation == "div"){
+				if(x2 == 0){
+					document.getElementById("result").innerHTML = "Không thể chia cho 0";
+				}else{
+					document.getElementById("result").innerHTML = x1 / x2;
+				}
+			}
+			if(calculation == "power"){
+				document.getElementById("result").innerHTML = Math.pow(x1,x2);
+			}
+
+		}
+	</script>
+	<div id="main">
+		<input type="number" id="variable1" placeholder="Giá trị 1">
+		<button id="sum" onclick="result(this.id)"> + </button>
+		<button id="sub" onclick="result(this.id)"> - </button>
+		<button id="mutil" onclick="result(this.id)"> x </button>
+		<button id="div" onclick="result(this.id)"> / </button>
+		<button id="power" onclick="result(this.id)"> ^ </button>
+		<input type="number" id="variable2" placeholder="Giá trị 2">
+		<label> = </label>
+		<label style="background-color:#eee; size:50px" id="result">Kết quả</label>
+	</div>
+</body>
+<style type="text/css">
+	div#main{
+		text-align: center;
+	}
+</style>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+		var countries = new Array([""]);
+		var percens = new Array([""]);
+
+		var country = "";
+		var st1 = "";
+
+		var i = 0;
+
+		function check(){
+
+			country = document.getElementById("country").value;
+			if (country == "") {
+				return false;
+			}
+
+			for (var j = 0; j <= i; j++) {
+				if (country == countries[j]) {
+					return false;
+				}
+			}
+			return true;
+		}
+
+		function addRow(){
+			if (check()) {
+				countries[i] = country;
+				percens[i] = document.getElementById("percen").value;
+				document.getElementById("country").value = "";
+				st1 += "<p>" + country +" : " +"</p>" + "<p>"+ percens[i] +" % " + "</p>" + "<br>";
+				document.getElementById("content").innerHTML = st1;
+				i++;
+			}
+		}
+
+		function print(){
+			var tier2 = document.getElementById("tier2");
+			var a = "";
+			for (var k = 0; k < i; k++) {
+				a += "<p>" + countries[k] + "</p>" + "<div class='red'" + " style='width:"+ percens[i]+"px'" +"></div>" + "<br>"
+				tier2.innerHTML = a;
+			}
+		}
+			
+		</script>
+</head>
+<body>
+<div id="main">
+	<p style="display:inline-block">Điền thông tin</p>
+	<input type="text" id="country" maxlength="12" size="15" placeholder="Tên nước">
+	<input type="number" id="percen" max="100" min="0" placeholder="Phần trăm" style="width:100px">
+	<button onclick="addRow()">Thêm</button>
+	<button onclick="print()">In đồ thị</button>
+	<div id="content"></div>
+	</div>
+	<div id="tier2">
+		
+	</div>
+</div>
+
+</body>
+	<style type="text/css">
+		div#main{
+			width: 1000px;
+			min-width: 1000px;
+			min-height: 700px;
+			margin: auto;
+			text-align: center;
+		}
+		#main div#content{
+			min-height: 250px;
+			width: 100%;
+			border: 1px dotted #eee;
+			margin:auto;
+			margin-top: 20px;
+		}
+		#content p{
+			display: inline-block;
+			border: 0.5px solid #eee;
+			width: 120px;
+			margin-top: 5px;
+			text-align: right;
+
+		}
+		#tier2{
+			min-height: 250px;
+			width: 100%;
+			border: 1px dotted #eee;
+			margin:auto;
+		}
+		#tier2 p{
+			display: inline-block;
+			border: 0.5px solid #eee;
+			width: 120px;
+			margin-top: 5px;
+			text-align: right;
+
+		}
+		div.red{
+			display: inline-block;
+			background-color: red;
+			height: 20px;
+			width: 200px;
+		}
+	</style>
+</html>

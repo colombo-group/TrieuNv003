@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Bai3</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var m = 0;
+		var s = 0;
+		var ms = 0;
+		
+		function start(){
+			if(typeof(a) == "undefined"){
+				a = setInterval(count,100);
+			}
+		}
+		function stop(){
+			a = clearInterval(a);
+		}
+
+		function reset(){
+			a = clearInterval(a);
+			m = 0;
+			s = 0;
+			ms = 0;
+			document.getElementById("time").innerHTML = "00:00.0";
+		}
+
+		function count(){
+			ms++;
+
+			if(ms == 10){
+				s++;
+				ms = 0;
+			}
+			if (s == 60) {
+				m++;
+				s =0;
+			}
+			if (m == 60) {
+				reset();
+				start();
+			}
+
+			var time = "";
+			if(m < 10){
+				time += "0" + m + ":";
+			}else{
+				time+= m + ":";
+			}
+			if(s < 10){
+				time += "0" + s;
+			}else{
+				time+= s;
+			}
+
+			time +="." + ms;
+			document.getElementById("time").innerHTML = time;
+		}
+
+	</script>
+
+	<div id="main">
+		<h1 id="time">00:00.0</h3>
+		<button id="start" onclick="start()">Bắt đầu</button>
+		<button id="stop" onclick="stop()">Tạm dừng</button>
+		<button id="reset" onclick="reset()">Reset</button>
+	</div>
+	<style type="text/css">
+		div#main{
+			width: 1000px;
+			margin: auto;
+			text-align: center;
+		}
+	</style>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Bai 5</title>
+	<meta charset="utf-8">
+</head>
+<script type="text/javascript">
+	function paint() {
+
+		var num = document.getElementById("number").value;
+		var arr = [""];
+		var row = "";
+		for(var i = 1; i <= num; i++){
+
+			var y = i;
+			var x = i % 10;
+
+			for(var j = 0; j < y; j++){
+				arr[j] = x;
+				arr[--y] = x;
+				
+				if (x == 0) {
+					x = 9;
+				}
+				x--;
+			}
+			row += arr.join(" &nbsp") + "<br>";
+		}
+
+		document.getElementById("result").innerHTML = row;
+	}
+</script>
+<body>
+	<div style="text-align:center" >
+		<input type="number" id="number" placeholder="Điền số dòng">
+		<button id="but" onclick="paint()">Vẽ tam giác</button>
+		<div id="result" style="border:2px dotted #eee; width:1000px;min-height: 300px; margin:auto"></div>
+	</div>
+</body>
+</html>
