@@ -5,16 +5,104 @@
 </head>
 <body>
 
-	<div style="margin:auto; width:1000px; text-align:center; border:1px dotted #eee; min-height:200px">
-
-		<table>
-			
+	<div style="margin:auto; width:1000px; min-height: 400px; text-align:center; border:1px dotted #444; background:#fff">
+		<!--<button onclick="printCalender()">Print</button> -->
+		<table id="tb" style="margin:auto; border:2px solid #000">
+			<tr><th id="head1" colspan="7">This Month</th></tr>
+			<tr>
+				<td>Su</td>
+				<td>M</td>
+				<td>Tu</td>
+				<td>W</td>
+				<td>Th</td>
+				<td>F</td>
+				<td>Sa</td>
+			</tr>
 		</table>
 	</div>
+
+	<script type="text/javascript">
+		var listMonth = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'Octerber', 'November', 'December'];
+		var endOfMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+		var thisDay = new Date()
+		var date = thisDay.getDate();
+		var day = thisDay.getDay();
+		if (thisDay.getUTCFullYear()%4 == 0) {
+			endOfMonth[1] = 29;
+		}
+
+		function firstOfMonth(){
+			var m = date;
+			var l = day;
+			for (var i = m; i > 1; i--){
+				if (l == 0) {
+					l = 6;
+				}else{
+					l--;
+				}
+			}
+			return l; //Cần tình thú của ngày mồng 1. Mất nhiều thời giàn vãi c, kb sai chỗ nào. Cái này là đi sao chép.
+		}
+
+		var monthyear = listMonth[thisDay.getMonth()] + " " + thisDay.getUTCFullYear();
+		document.getElementById("head1").innerHTML = monthyear;
+
+		function createTd(str){
+			var td = document.createElement("td");
+			var text = document.createTextNode(str);
+			if(str == date){
+				td.style.color = "#f00";
+				td.style.background = "#aaa";
+			}
+			td.appendChild(text);
+			return td;
+		}
+
+		//function printCalender(){
+			var tb = document.getElementById("tb");
+			var tr = document.createElement("tr");
+			var j = 1;
+			var fom = firstOfMonth();
+			for (var i = 1; i < 8; i++) {
+				if (i < fom) {
+					tr.appendChild(createTd(""));
+				}else{
+					tr.appendChild(createTd(j++));
+				}
+			}
+
+			tb.appendChild(tr);
+			tr = document.createElement("tr");
+
+			var end = endOfMonth[thisDay.getMonth()];
+			while(j < end){
+				for (var i = 0; i < 7; i++) {
+					tr.appendChild(createTd(j++));
+
+					if (j > end) {
+						break;
+					}
+				}
+				tb.appendChild(tr);
+				tr = document.createElement("tr");
+				
+			}
+		//}
+
+
+	</script>
+
 	<style type="text/css">
 		th, td{
 			border: 1px solid #000;
 			font-weight: bold;
+			padding: 5px;
+		}
+		th{
+			font-size: 16px;
+		}
+		td{
+			width: 22px;
 		}
 	</style>
 </body>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Hehe</title>
+
+	<script type="text/javascript">
+
+	</script>
+</head>
+<body>
+	<div style="margin:auto; width:1000px; text-align:center; border:1px dotted #eee; min-height:200px">
+		<table id="tb">
+
+
+		</table>
+
+		<script type="text/javascript">
+
+			var tb = document.getElementById("tb");
+			var tr = document.createElement("tr");
+
+			function appendBox(str){
+				var	text = document.createTextNode(str);
+				var	node = document.createElement("td");
+				node.appendChild(text);
+				tr.appendChild(node);
+			}
+
+			function appendRow(){
+				tb.appendChild(tr);
+				tr  = document.createElement("tr");
+			}
+
+			for (var i = 0; i < 7; i++) {
+
+				for (var j = 0; j < 7; j++) {
+					appendBox(i + "," + j);
+				}
+
+				appendRow();
+			}
+		</script>
+	</div>
+
+
+
+<style type="text/css">
+	tr, td, th{
+		padding: 5px;
+		border: 1px solid #eee;
+	}
+</style>
+</body>
+</html>

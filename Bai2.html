@@ -24,6 +24,9 @@
 					return false;
 				}
 			}
+			if (document.getElementById("percen").value > 100 || document.getElementById("percen").value <0) {
+				return false;
+			}
 			return true;
 		}
 
@@ -39,11 +42,25 @@
 		}
 
 		function print(){
-			var tier2 = document.getElementById("tier2");
-			var a = "";
+			var tb = document.getElementById("tb");
+
 			for (var k = 0; k < i; k++) {
-				a += "<p>" + countries[k] + "</p>" + "<div class='red'" + " style='width:"+ percens[i]+"px'" +"></div>" + "<br>"
-				tier2.innerHTML = a;
+				var text = document.createTextNode(countries[k]);
+				var td1 = document.createElement("td");
+				td1.style.width = "50px";
+				td1.appendChild(text);
+
+				var divRight = document.createElement("div");
+				divRight.style.width = percens[k] + "%";
+				divRight.style.background = "#f00";
+				divRight.style.height = "100%";
+				var td2 = document.createElement("td");
+				td2.appendChild(divRight);
+
+				var tr = document.createElement("tr");
+				tr.appendChild(td1);
+				tr.appendChild(td2);
+				tb.appendChild(tr);
 			}
 		}
 			
@@ -55,13 +72,20 @@
 	<input type="text" id="country" maxlength="12" size="15" placeholder="Tên nước">
 	<input type="number" id="percen" max="100" min="0" placeholder="Phần trăm" style="width:100px">
 	<button onclick="addRow()">Thêm</button>
-	<button onclick="print()">In đồ thị</button>
-	<div id="content"></div>
-	</div>
-	<div id="tier2">
+
+	<div id="content">
 		
 	</div>
+	
+	<button onclick="print()">vẽ đồ thị</button>
+
+	<div id="tier2">
+		<table id="tb" style="margin:auto">
+			
+		</table>
+	</div>
 </div>
+
 
 </body>
 	<style type="text/css">
@@ -88,24 +112,17 @@
 
 		}
 		#tier2{
+			text-align: center;
 			min-height: 250px;
 			width: 100%;
 			border: 1px dotted #eee;
 			margin:auto;
 		}
-		#tier2 p{
-			display: inline-block;
-			border: 0.5px solid #eee;
-			width: 120px;
-			margin-top: 5px;
-			text-align: right;
-
-		}
-		div.red{
-			display: inline-block;
-			background-color: red;
-			height: 20px;
+		td {
+			border: 1px solid #aaa;
 			width: 200px;
+			height: 20px;
 		}
+
 	</style>
 </html>
