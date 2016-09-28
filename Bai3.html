@@ -12,11 +12,24 @@
 		
 		function start(){
 			if(typeof(a) == "undefined"){
+				m = 0;
+				s = 0;
+				ms = 0;
 				a = setInterval(count,100);
 			}
 		}
+
+		var turn = 1;
 		function stop(){
-			a = clearInterval(a);
+			turn %= 2;
+			if (turn == 1) {
+				a = clearInterval(a);
+				document.getElementById("stop").innerHTML = "Tiếp tục";
+			}else{
+				document.getElementById("stop").innerHTML = "Tạm dừng";
+				a = setInterval(count,100);
+			}
+			turn++;
 		}
 
 		function reset(){

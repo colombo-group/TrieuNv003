@@ -41,10 +41,11 @@
 			}
 		}
 
+		var k = 0;
 		function print(){
 			var tb = document.getElementById("tb");
 
-			for (var k = 0; k < i; k++) {
+			for (k; k < i; k++) {
 				var text = document.createTextNode(countries[k]);
 				var td1 = document.createElement("td");
 				td1.style.width = "50px";

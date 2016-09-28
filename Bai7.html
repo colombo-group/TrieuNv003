@@ -32,7 +32,7 @@
 		}
 
 		function firstOfMonth(){
-			var m = date;
+			var m = date % 7 + 1;
 			var l = day;
 			for (var i = m; i > 1; i--){
 				if (l == 0) {
@@ -64,7 +64,7 @@
 			var j = 1;
 			var fom = firstOfMonth();
 			for (var i = 1; i < 8; i++) {
-				if (i < fom) {
+				if (i <= fom) {
 					tr.appendChild(createTd(""));
 				}else{
 					tr.appendChild(createTd(j++));
