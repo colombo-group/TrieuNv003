@@ -12,14 +12,15 @@
 		
 		function start(){
 			if(typeof(a) == "undefined"){
-				m = 0;
-				s = 0;
-				ms = 0;
 				a = setInterval(count,100);
+				document.getElementById("start").innerHTML = "Tạm dừng";
+			}else{
+				document.getElementById("start").innerHTML = "Tiếp tục";
+				a = clearInterval(a);
 			}
 		}
 
-		var turn = 1;
+/*		var turn = 1;
 		function stop(){
 			turn %= 2;
 			if (turn == 1) {
@@ -30,7 +31,7 @@
 				a = setInterval(count,100);
 			}
 			turn++;
-		}
+		}*/
 
 		function reset(){
 			a = clearInterval(a);
@@ -38,6 +39,7 @@
 			s = 0;
 			ms = 0;
 			document.getElementById("time").innerHTML = "00:00.0";
+			document.getElementById("start").innerHTML = "Bắt đầu";
 		}
 
 		function count(){
@@ -77,7 +79,6 @@
 	<div id="main">
 		<h1 id="time">00:00.0</h3>
 		<button id="start" onclick="start()">Bắt đầu</button>
-		<button id="stop" onclick="stop()">Tạm dừng</button>
 		<button id="reset" onclick="reset()">Reset</button>
 	</div>
 	<style type="text/css">
