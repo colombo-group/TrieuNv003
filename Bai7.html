@@ -22,26 +22,18 @@
 	</div>
 
 	<script type="text/javascript">
-		var listMonth = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'Octerber', 'November', 'December'];
+		var listMonth = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 		var endOfMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 		var thisDay = new Date()
 		var date = thisDay.getDate();
 		var day = thisDay.getDay();
-		if (thisDay.getUTCFullYear()%4 == 0) {
+		if (thisDay.getFullYear()%4 == 0) {
 			endOfMonth[1] = 29;
 		}
 
 		function firstOfMonth(){
-			var m = date % 7 + 1;
-			var l = day;
-			for (var i = m; i > 1; i--){
-				if (l == 0) {
-					l = 6;
-				}else{
-					l--;
-				}
-			}
-			return l; //Cần tình thú của ngày mồng 1. Mất nhiều thời giàn vãi c, kb sai chỗ nào. Cái này là đi sao chép.
+			var m = new Date(thisDay.getFullYear(),thisDay.getMonth(),1);
+			return m.getDay();
 		}
 
 		var monthyear = listMonth[thisDay.getMonth()] + " " + thisDay.getUTCFullYear();
